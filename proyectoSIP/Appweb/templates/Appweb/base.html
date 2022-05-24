@@ -1,0 +1,123 @@
+<html>
+
+<head>
+
+     {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'Appweb/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     <link rel="shortcut icon" type="image/x-icon" href="{% static 'Appweb/img/Imagen_icon.png' %}">
+
+     
+
+    <!-- Styles -->
+    <link href="{% static 'Appweb/css/gestion.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!--Aqui se Cambia los titulos de la plantilla home principal-->
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+        <span class="site-heading-upper text-primary mb-3">Tienda Electronica</span>
+        <span class="site-heading-lower">SIP.electronic</span>
+      </h1>
+
+
+ <div style="text-align: right; margin-right: 100px; color:white;">
+
+  {% if user.is_authenticated %}
+   
+  <img src="{% static 'Appweb/img/imagen_avatar.jpg' %}" alt="">&nbsp; &nbsp; {{user.username}} &nbsp; &nbsp; <a href="{% url 'cerrar_sesion' %}" style="color:white;">CERRAR SESION</a>
+
+  {% else %}
+
+     <!--Aqu es donde se va colar el link para redireccionar a la  plantila de html  -->
+     <img src="{% static 'Appweb/img/image_usuario.jpg' %}" alt="">&nbsp; &nbsp;<a href="{% url 'logear' %}" style="color:white;">INICIAR SESION</a>&nbsp; &nbsp;<img src="{% static 'Appweb/img/imagen_registro.png' %}" alt="">&nbsp; &nbsp;<a href="{% url 'autenticacion'%}" style="color:white;">REGISTRATE</a>
+
+
+  {% endif %}
+
+</div>
+
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'home' %}">SIP.electronic</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <!-- aqui se resalta cuando nos paramos en el cursos de los menus -->
+          <li class="nav-item {% if request.path == '/' %}m active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Inicio</a>
+          </li>
+          <li class="nav-item {% if request.path == '/productos' %}m active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'productos' %}">Productos</a>
+          </li>
+          <li class="nav-item {% if request.path == '/contacto' %}m active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'contacto'  %}">Contacto</a>
+          </li>
+          <li class="nav-item {% if request.path == '/blog' %}m active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'blog' %}">Blog</a>
+          </li>
+          <li>
+            <a class="nav-link text-uppercase text-expanded" style="color:white;">Atencion Comercial 3152266755</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <!--Contenido cambiante-->
+    {% block content %}
+
+    {% endblock %}
+
+
+    <!-- Footer -->
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	    </p>
+        <p class="m-0 mbt">
+        	<a href="sample.html" class="link">Política de privacidad</a> 
+        	<a href="sample.html" class="link">Aviso legal</a> 
+        	<a href="sample.html" class="link">Cookies</a>
+		</p>
+        <p class="m-0 mbt1">&copy; Gestión de Pedidos 2020</p>
+      </div>
+	</footer>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'Appweb/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Appweb/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+
+</html>

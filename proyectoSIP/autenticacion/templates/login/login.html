@@ -1,0 +1,72 @@
+<!--Se hace la ruta para que herede de la plantilla base.html-->
+{% extends "Appweb/base.html" %}
+
+<!--Que cargue todo lo que esta en la carpeta static-->
+{% load static  %}
+
+{% block content %}
+<!-- Contenido prinicipal del home-->
+
+<form method="post"  class="form" style="color:white;">
+
+
+    <p style="color:white; margin: 20px auto; text-align:  center;">---------INICIAR SESION CON SU CUENTA--------</p>
+
+
+    {% csrf_token %}
+
+    <div style="width: 30%; margin: auto;">
+
+        
+
+     <table style="color:whitesmoke; margin: 50px auto;">{{form.as_table}}</table>
+
+        
+         
+
+          
+       <div  style="width: 30%; margin: 50px auto;">
+
+         <button type="submit"  class="btn btn-success">INICIAR SESION</button>
+       </div>
+         
+       <div>
+
+         <p style="color:white; margin: 50px auto; text-align:  center;">-------------------------------------------------</p>
+
+
+       </div>
+       
+
+
+       
+
+       
+
+    </div>
+   
+    
+
+    <div  style="width: 20%; margin: auto;">
+
+        {% if messages %}
+
+        {% for mensaje in messages %}
+
+        <span class="alert alert-{{mensaje.tags}}">{{mensaje}}</span>
+
+        
+
+        {% endfor %}
+        {% endif %}
+ 
+
+
+    </div>
+    
+
+
+</form>
+
+
+{% endblock %}

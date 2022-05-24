@@ -1,0 +1,39 @@
+<!--Se hace la ruta para que herede de la plantilla base.html-->
+{% extends "Appweb/base.html" %}
+
+<!--Que cargue todo lo que esta en la carpeta static-->
+{% load static  %}
+
+{% block content %}
+<!-- Contenido prinicipal del home-->
+
+<div class="contenedorFormulario">
+
+    <p style="color:white; margin: 20px auto; text-align:  center;">-----------------CONTACTE CON NOSOTROS----------------</p>
+
+   
+    
+    <form action="" method="POST" style="text-align:  center;">
+
+      {% csrf_token %}
+      <table style="color:white; margin: 20px auto;">{{miFormulario.as_table}}</table>
+
+      <input type="submit" value="Enviar" style="width: 150px;">
+
+    </form>
+
+
+    {% if "valido" in request.GET %}
+
+    <p style="color:white; margin: 30px auto; text-align:  center;">Informacion enviadad correctamente</p>
+
+
+
+    {% endif %}
+
+
+</div>
+
+
+
+{% endblock %}
